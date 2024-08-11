@@ -56,7 +56,8 @@ export default function Home() {
   }, [])
 
   const normalizeItemName = (item) => {
-    return item.charAt(0).toUpperCase() + item.slice(1).toLowerCase();
+
+    return item.charAt(0).toUpperCase().trim() + item.slice(1).toLowerCase().trim();
   }
 
 
@@ -121,7 +122,7 @@ export default function Home() {
             <Button variant="contained"
               onClick={() => {
                 addItem(itemName)
-                setItemName(' ')
+                setItemName('')
                 handleClose()
               }}
             >
@@ -158,7 +159,7 @@ export default function Home() {
                 <Stack direction="row" spacing={10} alignItems="center">
                   <Typography
                     variant={'h3'} color={'#333'} textAlign={'center'}>
-                    {name.charAt(0).toUpperCase() + name.slice(1)}
+                    {normalizeItemName(name)}
                   </Typography>  
                   <Typography variant={'h3'} color={'#333'} textAlign={'center'}>
                     Quantity: {count}
